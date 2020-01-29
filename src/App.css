@@ -1,0 +1,131 @@
+.heading {
+  text-align: center;
+  color: rgb(160, 17, 53);
+}
+
+.note{
+  /* background: rgb(224, 214, 214); */
+  text-align: center;
+  width: auto;
+  height: auto;
+  padding: 10px;
+}
+
+textarea, input {
+  border-radius: 5px;
+  font-size: large;
+  padding: 10px;
+}
+
+.selectBox, button {
+  height: 30px;
+  width: 100px;
+  border-radius: 5px;
+  margin: 5px;
+  border: 1px solid black;
+  font-weight: bold;
+  background: rgb(74, 230, 230);
+}
+
+.selectBox {
+  background: rgb(175, 179, 170);
+}
+
+.view {
+  margin-left: 40px;
+}
+
+.perpage {
+  height: 20px;
+  width: 20px;
+  line-height: 15px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.deleteBtn{
+  height: 30px;
+  width: 30px;
+  border-radius: 3px;
+  font-size: 25px;
+  text-align: center;
+  color: red;
+  background: none;
+  border: none;
+}
+
+td {
+  font-size: large;
+}
+
+.label {
+  font-size: x-large;
+}
+
+tbody {
+  display: flex;
+}
+
+.body {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: auto;
+  margin: 20px;
+}
+
+input {
+  margin: 10px;
+  border: 1px solid grey;
+}
+
+.edit {
+  margin-left: 50px;
+}
+
+.nextCrt {
+  background: green;
+  height: 20px;
+  border-radius: 3px;
+  width: 40px;
+}
+
+.nextWrng {
+  color: white;
+  background: rgb(75, 129, 43);
+  height: 20px;
+  border-radius: 3px;
+  width: 40px;
+}
+
+.prevCrt {
+  background: red;
+  height: 20px;
+  border-radius: 3px;
+  width: 40px;
+}
+
+.prevWrng {
+  background: rgb(230, 94, 31);
+  color: white;
+  border-radius: 3px;
+  height: 20px;
+  width: 40px;
+}
+
+.pageper {
+  width: 80px;
+  height: 20px;
+  border-radius: 3px;
+  background: rgb(91, 207, 207);
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.editPage, .viewPage {
+  text-align: center;
+}
+
+.filterText {
+  font-size: large;
+  font-weight: bold;
+}
