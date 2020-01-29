@@ -142,6 +142,7 @@ class ViewNote extends Component {
                         <option value="50">50</option>
                     </select>  
                    </div> 
+                   <Link to="/"><button className="addNotes">Add more Notes</button></Link>
             </div>
         )
     }
