@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { note_action } from './../Redux/Action';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 class Note extends Component {
     constructor(props) {
         super(props)
         this.state = {
             note: '',
-            drop:'',
+            drop: '',
         }
     }
     input_change = (e) => {
@@ -27,30 +27,28 @@ class Note extends Component {
         this.reset()
         // this.props.history.push('/ViewNote')
     }
-
     reset = () => {
         this.setState({
             note: "",
             drop: ""
         })
     }
-
     render() {
         return (
             <React.Fragment>
                 <div>
                     <form onSubmit={this.input_submit}>
                         <div>
-                        <textarea className="" type="text" placeholder="Make a Note &#128466;" name="note" value={this.state.note} onChange={this.input_change} required/>
-                        <br/>
-                        <select name="cars" name="drop" value={this.state.drop} onChange={this.input_change} className="selectBox" required >
-                            <option value="">Select Levels</option>
-                            <option value="Full Stack">Full Stack</option>
-                            <option value="React">React</option>
-                            <option value="Redux">Redux</option>
-                            <option value="Python">Python</option>
-                            <option value="JavaScript">JavaScript</option>
-                        </select>
+                            <textarea className="" type="text" placeholder="Make a Note &#128466;" name="note" value={this.state.note} onChange={this.input_change} required />
+                            <br />
+                            <select name="cars" name="drop" value={this.state.drop} onChange={this.input_change} className="selectBox" required >
+                                <option value="">Select Levels</option>
+                                <option value="Full Stack">Full Stack</option>
+                                <option value="React">React</option>
+                                <option value="Redux">Redux</option>
+                                <option value="Python">Python</option>
+                                <option value="JavaScript">JavaScript</option>
+                            </select>
                         </div>
                         <button type="submit" className="">Add a note</button>
                         <Link to="/view" type="submit"><button className="view">view</button></Link>

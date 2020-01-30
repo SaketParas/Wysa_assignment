@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link ,Redirect} from 'react-router-dom';
-import {remove} from './../Redux/Action'
+import { Link, Redirect } from 'react-router-dom';
+import { remove } from './../Redux/Action'
 class ViewNote extends Component {
     constructor(props) {
         super(props)
@@ -9,7 +9,7 @@ class ViewNote extends Component {
             final_data: [],
             page: 1,
             per_page: 3,
-            search:'',
+            search: '',
         }
     }
     handle_change = (e) => {
@@ -18,20 +18,20 @@ class ViewNote extends Component {
     handleDelete = (id) => {
         this.props.remove(id)
     }
-    handleSearch=(e)=>{
+    handleSearch = (e) => {
         this.setState({
-            search:e.target.value
+            search: e.target.value
         })
     }
 
     handleDropDown = (e) => {
         e.preventDefault();
-        this.setState({[e.target.name]: Number(e.target.value)})
-      
+        this.setState({ [e.target.name]: Number(e.target.value) })
+
     }
 
     handleButton = (pageNo) => {
-        this.setState({page:Number(pageNo)})
+        this.setState({ page: Number(pageNo) })
     }
 
     handleNext = (a) => {
@@ -40,19 +40,19 @@ class ViewNote extends Component {
                 page: a + 1
             })
         }
-      }
+    }
 
-      handlePrev = (a) => {
+    handlePrev = (a) => {
         if (a > 1) {
             this.setState({
                 page: a - 1
             })
         }
-      }
-    
-    
+    }
+
+
     render() {
-         console.log(this.props.add.comments.stored_data)
+        console.log(this.props.add.comments.stored_data)
         // ******pagi***
         this.state.final_data = this.props.add.comments.stored_data
         let data = this.state.final_data
@@ -73,65 +73,65 @@ class ViewNote extends Component {
             )
         })
         // ******pagi***
-            // ****************search**
-            let user=pagination_data;
-            let search=this.state.search.trim().toLowerCase();
-            if(search.length > 0 ){
-                user=user.filter(function(user){
-                    // return user.company.toLowerCase().match(search);
-                    if(user.drop){
-                        return (user.drop).toLowerCase().match(search);
-                    }
-                })
-            }
-            var nextButton = () => {
-                if (this.state.page !== this.state.final_data.length) {
-                    return (
-                        <button className="nextCrt" onClick={() => this.handleNext(this.state.page)}> Next</button>
-                    )
-              
+        // ****************search**
+        let user = pagination_data;
+        let search = this.state.search.trim().toLowerCase();
+        if (search.length > 0) {
+            user = user.filter(function (user) {
+                // return user.company.toLowerCase().match(search);
+                if (user.drop) {
+                    return (user.drop).toLowerCase().match(search);
                 }
-                else {
-                    return (
-                        <button className="nextWrng" disabled>Next</button>
-                    )
-                }
-              }
-    
-              var prevButton = () => {
-                if (this.state.page !== 1) {
-                    return (
-                        <button className="prevCrt" onClick={() => this.handlePrev(this.state.page)}>Prev</button>
-                    )
-                }
-                else {
-                    return (
-                        <button className="prevWrng"  disabled>Prev</button>
-                    )
-                }
-              }
-             // ****************search**
-            //console.log(this.props.add.comments.stored_data);
-            //let user = this.props.add.comments.stored_data
-            let show_user =  user.reverse().map((e, i) => {
-                return(
-                    <tbody className="body" key={i}>
-                        <tr>
-                            <td className="label">{e.drop}</td><br/>
-                            <td className="note">{e.note}</td>
-                            <td><Link className="edit" to={`/edit/${e.id}`}> &#9998;</Link></td>
-                            <td><button className="deleteBtn" onClick={() => this.handleDelete(e.id) }> &#10007;</button></td>
-                        </tr>
-                    </tbody>
-                )
             })
-            
+        }
+        var nextButton = () => {
+            if (this.state.page !== this.state.final_data.length) {
+                return (
+                    <button className="nextCrt" onClick={() => this.handleNext(this.state.page)}> Next</button>
+                )
+
+            }
+            else {
+                return (
+                    <button className="nextWrng" disabled>Next</button>
+                )
+            }
+        }
+
+        var prevButton = () => {
+            if (this.state.page !== 1) {
+                return (
+                    <button className="prevCrt" onClick={() => this.handlePrev(this.state.page)}>Prev</button>
+                )
+            }
+            else {
+                return (
+                    <button className="prevWrng" disabled>Prev</button>
+                )
+            }
+        }
+        // ****************search**
+        //console.log(this.props.add.comments.stored_data);
+        //let user = this.props.add.comments.stored_data
+        let show_user = user.reverse().map((e, i) => {
+            return (
+                <tbody className="body" key={i}>
+                    <tr>
+                        <td className="label">{e.drop}</td><br />
+                        <td className="note">{e.note}</td>
+                        <td><Link className="edit" to={`/edit/${e.id}`}> &#9998;</Link></td>
+                        <td><button className="deleteBtn" onClick={() => this.handleDelete(e.id)}> &#10007;</button></td>
+                    </tr>
+                </tbody>
+            )
+        })
+
         return (
             <div className="viewPage">
                 <span className="filterText">Filter by Label:</span>
-                 <input className="" name="serach" value={this.state.search} type="text" placeholder="Search By Label" onChange={this.handleSearch} />
+                <input className="" name="serach" value={this.state.search} type="text" placeholder="Search By Label" onChange={this.handleSearch} />
                 {show_user}
-                
+
                 <div className="my-5">  {prevButton()}{button} {nextButton()}
                     <select className="pageper" onChange={this.handleDropDown} name="per_page">
                         <option value="5" selected>Per Page</option>
@@ -140,9 +140,9 @@ class ViewNote extends Component {
                         <option value="15">15</option>
                         <option value="20">20</option>
                         <option value="50">50</option>
-                    </select>  
-                   </div> 
-                   <Link to="/"><button className="addNotes">Add more Notes</button></Link>
+                    </select>
+                </div>
+                <Link to="/"><button className="addNotes">Add more Notes</button></Link>
             </div>
         )
     }
@@ -153,8 +153,8 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToState = (dispatch) => {
-  return{
-    remove: (data) => dispatch(remove(data))
-  }
+    return {
+        remove: (data) => dispatch(remove(data))
+    }
 }
-export default connect(mapStateToProps,mapDispatchToState)(ViewNote) 
+export default connect(mapStateToProps, mapDispatchToState)(ViewNote) 
